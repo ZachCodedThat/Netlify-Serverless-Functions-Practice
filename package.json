@@ -1,0 +1,22 @@
+{
+  "name": "netlify-serverless-functions-practice",
+  "version": "1.0.0",
+  "description": "Learn how to use serverless functions in less than 30 minutes!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZachCodedThat/Netlify-Serverless-Functions-Practice.git"
+  },
+  "author": "zach",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZachCodedThat/Netlify-Serverless-Functions-Practice/issues"
+  },
+  "homepage": "https://github.com/ZachCodedThat/Netlify-Serverless-Functions-Practice#readme",
+  "devDependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}

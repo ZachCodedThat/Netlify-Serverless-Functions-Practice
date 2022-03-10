@@ -9,17 +9,41 @@
   <body>
     <h1>Up and Running with Serverless Functions</h1>
     <button id="fetch-btn">Fetch</button>
-    <p id="response-output">Response Placeholder</p>
+    <p id="firstName-output">Response Placeholder</p>
+    <p id="lastName-output">Response Placeholder</p>
+    <p id="age-output">Response Placeholder</p>
+
+    <button id="fetch-pokedex-btn">Fetch Pokedex</button>
+    <p id="pokedex-output">Response Placeholder</p>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const fetchBtn = document.getElementById('fetch-btn')
-        const responseText = document.getElementById('response-output')
+      document.addEventListener("DOMContentLoaded", () => {
+        const fetchBtn = document.getElementById("fetch-btn");
+        const firstNameText = document.getElementById("firstName-output");
+        const lastNameText = document.getElementById("lastName-output");
+        const ageText = document.getElementById("age-output");
 
-        fetchBtn.addEventListener('click', () => {
-          responseText.innerText = 'Static Text Replacement'
-        })
-      })
+        const fetchPokedexBtn = document.getElementById("fetch-pokedex-btn");
+        const pokedexText = document.getElementById("pokedex-output");
+
+        fetchPokedexBtn.addEventListener("click", async () => {
+          const response = await fetch("/.netlify/functions/pokedex").then(
+            (res) => res.json()
+          );
+
+          pokedexText.innerText = JSON.stringify(response, null, 2);
+        });
+
+        fetchBtn.addEventListener("click", async () => {
+          const response = await fetch("/.netlify/functions/hello-world").then(
+            (res) => res.json()
+          );
+
+          firstNameText.innerText = response.firstName;
+          lastNameText.innerText = response.lastName;
+          ageText.innerText = response.age;
+        });
+      });
     </script>
   </body>
 </html>
