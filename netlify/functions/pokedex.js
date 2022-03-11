@@ -7,8 +7,19 @@ exports.handler = async function () {
 
   const data = await response.json();
 
+  const pokemons = await data.pokemon_entries.map((pokemon) => {
+    const pokemonImages = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.entry_number}.png`;
+
+    return {
+      name: pokemon.pokemon_species.name,
+      url: pokemon.pokemon_species.url,
+      id: pokemon.entry_number,
+      image: pokemonImages,
+    };
+  });
+
   return {
     statusCode: 200,
-    body: JSON.stringify(data),
+    body: JSON.stringify(pokemons),
   };
 };
